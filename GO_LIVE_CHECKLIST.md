@@ -1,0 +1,23 @@
+# Go-live checklist
+
+- [ ] Supabase project created
+- [ ] Anonymous sign-in enabled
+- [ ] Admin Auth user created
+- [ ] Admin UUID inserted into `public.admins`
+- [ ] Production SQL executed successfully
+- [ ] RLS/security policies verified
+- [ ] `config.js` populated with URL + publishable key only
+- [ ] Site deployed over HTTPS
+- [ ] Customer order tested
+- [ ] Admin payment confirmation tested
+- [ ] Admin supply confirmation tested
+- [ ] Stock add/reduce tested
+- [ ] Cancellation/stock restoration tested
+- [ ] After-hours/weekend ordering blocked
+- [ ] Two-device concurrent stock test passed
+- [ ] iPhone Safari test passed
+- [ ] Android Chrome test passed
+- [ ] Windows Chrome/Edge test passed
+- [ ] macOS Safari/Chrome test passed
+- [ ] Linux Chrome/Firefox test passed
+- [ ] Customer notification consent/provider decision completed
