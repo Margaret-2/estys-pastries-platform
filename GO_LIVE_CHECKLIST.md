@@ -1,23 +1,15 @@
-# Go-live checklist
+# Esty's Pastries V8 — Go-live checklist
 
-- [ ] Supabase project created
-- [ ] Anonymous sign-in enabled
-- [ ] Admin Auth user created
-- [ ] Admin UUID inserted into `public.admins`
-- [ ] Production SQL executed successfully
-- [ ] RLS/security policies verified
-- [ ] `config.js` populated with URL + publishable key only
-- [ ] Site deployed over HTTPS
-- [ ] Customer order tested
-- [ ] Admin payment confirmation tested
-- [ ] Admin supply confirmation tested
-- [ ] Stock add/reduce tested
-- [ ] Cancellation/stock restoration tested
-- [ ] After-hours/weekend ordering blocked
-- [ ] Two-device concurrent stock test passed
-- [ ] iPhone Safari test passed
-- [ ] Android Chrome test passed
-- [ ] Windows Chrome/Edge test passed
-- [ ] macOS Safari/Chrome test passed
-- [ ] Linux Chrome/Firefox test passed
-- [ ] Customer notification consent/provider decision completed
+- [x] V5 website used as the update base
+- [x] V8 fixed Supabase migration applied separately
+- [x] Customer/Admin separation preserved
+- [x] `config.js` preserved
+- [x] Customer credit purchase added
+- [x] Weekly opening/closing controls added to Admin
+- [x] Customer order history/cancellation added
+- [x] Refund workflow added
+- [x] Order filtering, sorting and pagination added
+- [x] Customer period analytics added
+- [x] JavaScript syntax checked
+
+Before replacing the live Vercel deployment, test the V8 files in a preview deployment first.
