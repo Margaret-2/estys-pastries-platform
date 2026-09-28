@@ -28,7 +28,11 @@ function setupMsg(){ if(!ready){document.body.insertAdjacentHTML('afterbegin','<
 async function boot(){setupMsg(); if(!sb)return; let {data:{session}}=await sb.auth.getSession(); if(!session){let r=await sb.auth.signInAnonymously(); if(r.error){alert('Unable to start a customer session.');return;} session=r.data.session;} customerId=session.user.id; await Promise.all([loadProducts(),loadPaymentDetails()]); await updateOrderWindow(); await loadMyOrders();}
 async function updateOrderWindow(){
   let open=false;
-  if(sb){const now=new Date(); const lagos=new Date(now.toLocaleString('en-US',{timeZone:'Africa/Lagos'})); const y=lagos.getFullYear(),m=String(lagos.getMonth()+1).padStart(2,'0'),d=String(lagos.getDate()).padStart(2,'0'); const day=lagos.getDay(); const monday=new Date(lagos); monday.setDate(lagos.getDate()-(day===0?6:day-1)); const ws=`${monday.getFullYear()}-${String(monday.getMonth()+1).padStart(2,'0')}-${String(monday.getDate()).padStart(2,'0')}`; const {data}=await sb.from('weekly_periods').select('status').eq('week_start',ws).maybeSingle(); const t=lagos.getHours()+lagos.getMinutes()/60; open=!!data&&data.status==='open'&&day>=1&&day<=5&&t>=7.5&&t<17; }
+  if(sb){
+    const {data,error}=await sb.rpc('is_order_window_open');
+    if(!error) open=data===true;
+    else console.error('Order window check failed:',error);
+  }
   const badge=document.querySelector('.eyebrow'); if(badge){badge.textContent=open?'NOW TAKING ORDERS':'ORDERS CLOSED'; badge.style.background=open?'#F2D69B':'#F6DDD8';}
   document.querySelectorAll('[data-order-ready]').forEach(x=>x.disabled=!open);
   return open;
